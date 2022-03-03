@@ -53,7 +53,7 @@ public class EnhetstestSikkerhetController {
 
     @Test
     public void sjekkLoggInnFeilPersonnummerRegex() {
-        session.setAttribute("Innlogget", "12345678901");
+        session.setAttribute("Innlogget", null);
 
         // act
         String resultat = sikkerhetsController.sjekkLoggInn("1234", "Hehehehe");
