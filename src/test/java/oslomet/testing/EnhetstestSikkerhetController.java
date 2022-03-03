@@ -42,6 +42,7 @@ public class EnhetstestSikkerhetController {
 
     @Test
     public void sjekkLoggInnFeilPassordRegex() {
+        // arrange
         session.setAttribute("Innlogget", null);
 
         // act
@@ -53,6 +54,7 @@ public class EnhetstestSikkerhetController {
 
     @Test
     public void sjekkLoggInnFeilPersonnummerRegex() {
+        // arrange
         session.setAttribute("Innlogget", null);
 
         // act
@@ -78,6 +80,7 @@ public class EnhetstestSikkerhetController {
 
     @Test
     public void loggUtTest() {
+        // arrange
         session.setAttribute("Innlogget", null);
 
         // act
@@ -89,6 +92,7 @@ public class EnhetstestSikkerhetController {
 
     @Test
     public void loggInnAdminOK() {
+        // arrange
         session.setAttribute("Innlogget", "Admin");
 
         // act
@@ -100,6 +104,7 @@ public class EnhetstestSikkerhetController {
 
     @Test
     public void loggInnAdminFeil() {
+        // arrange
         session.setAttribute("Innlogget", null);
 
         // act
@@ -111,25 +116,25 @@ public class EnhetstestSikkerhetController {
 
     @Test
     public void loggetInnOK() {
-        // assert
+        // arrange
         session.setAttribute("Innlogget", "12345678901");
 
         // act
         String resultat = sikkerhetsController.loggetInn();
 
-        // arrange
+        // assert
         assertEquals(session.getAttribute("Innlogget"), resultat);
     }
 
     @Test
     public void loggetInnFeil() {
-        // assert
+        // arrange
         session.setAttribute("Innlogget", null);
 
         // act
         String resultat = sikkerhetsController.loggetInn();
 
-        // arrange
+        // assert
         assertNull(resultat);
     }
 }
