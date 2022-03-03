@@ -144,7 +144,7 @@ public class EnhetstestBankController {
         when(repository.hentKonti(anyString())).thenReturn(konti);
 
         // act
-        List<Konto> resultat = bankController.hentKonti();
+        List<Konto> resultat = bankController.hentSaldi();
 
         // assert
         assertEquals(konti, resultat);
@@ -156,7 +156,7 @@ public class EnhetstestBankController {
         when(sjekk.loggetInn()).thenReturn(null);
 
         // act
-        List<Konto> resultat = bankController.hentKonti();
+        List<Konto> resultat = bankController.hentSaldi();
 
         // assert
         assertNull(resultat);
