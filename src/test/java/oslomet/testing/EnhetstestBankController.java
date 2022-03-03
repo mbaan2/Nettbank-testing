@@ -105,7 +105,7 @@ public class EnhetstestBankController {
         // arrange
         Konto konto = new Konto("1050101123456", "01010110523", 72000, "Brukskonto", "NOK", null);
 
-        when(sjekk.loggetInn()).thenReturn("01010110523");
+        when(sjekk.loggetInn()).thenReturn("1050101123456");
 
         when(repository.hentTransaksjoner(konto.getKontonummer(), "", "")).thenReturn(konto);
 
@@ -139,7 +139,7 @@ public class EnhetstestBankController {
         konti.add(konto1);
         konti.add(konto2);
 
-        when(sjekk.loggetInn()).thenReturn("01010110523");
+        when(sjekk.loggetInn()).thenReturn("105010123456");
 
         when(repository.hentKonti(anyString())).thenReturn(konti);
 
@@ -167,7 +167,7 @@ public class EnhetstestBankController {
         // arrange
         Transaksjon betaling = new Transaksjon(123, "02020220645", 750, "14-12-2021", "Betaling til deg", "01010110523", "godkjent");
 
-        when(sjekk.loggetInn()).thenReturn("01010110523");
+        when(sjekk.loggetInn()).thenReturn("105010123456");
 
         when(repository.registrerBetaling(betaling)).thenReturn("OK");
 
@@ -183,7 +183,7 @@ public class EnhetstestBankController {
         // arrange
         Transaksjon betaling = new Transaksjon(123, "02020220645", 750, "14-12-2021", "Betaling til deg", "godkjent", "01010110523");
 
-        when(sjekk.loggetInn()).thenReturn("01010110523");
+        when(sjekk.loggetInn()).thenReturn("105010123456");
 
         when(repository.registrerBetaling(betaling)).thenReturn("Feil");
 
@@ -216,9 +216,9 @@ public class EnhetstestBankController {
         transaksjoner.add(betaling);
         transaksjoner.add(betaling1);
 
-        when(sjekk.loggetInn()).thenReturn("01010110523");
+        when(sjekk.loggetInn()).thenReturn("105010123456");
 
-        when(repository.hentBetalinger("01010110523")).thenReturn(transaksjoner);
+        when(repository.hentBetalinger("105010123456")).thenReturn(transaksjoner);
 
         // act
         List<Transaksjon> resultat = bankController.hentBetalinger();
@@ -248,7 +248,7 @@ public class EnhetstestBankController {
         double saldo = konto.getSaldo() - betaling.getBelop();
         konto.setSaldo(saldo);
 
-        when(sjekk.loggetInn()).thenReturn("01010110523");
+        when(sjekk.loggetInn()).thenReturn("0101199111111");
 
         when(repository.utforBetaling(betaling.getTxID())).thenReturn("OK");
 
@@ -269,7 +269,7 @@ public class EnhetstestBankController {
         double saldo = konto.getSaldo() - betaling.getBelop();
         konto.setSaldo(saldo);
 
-        when(sjekk.loggetInn()).thenReturn("01010110523");
+        when(sjekk.loggetInn()).thenReturn("0101199111111");
 
         when(repository.utforBetaling(betaling.getTxID())).thenReturn("Feil");
 
@@ -293,8 +293,56 @@ public class EnhetstestBankController {
     }
 
     @Test
-    public void henteKundeInfo_LoggetInn() {
+    public void endreKundeInfo_LoggetInnOK() {
+        // arrange
+        Kunde enKunde = new Kunde("01010110523",
+                "Lene", "Jensen", "Askerveien 22", "3270",
+                "Asker", "22224444", "HeiHei");
 
+        when(sjekk.loggetInn()).thenReturn("01010110523");
+
+        when(repository.endreKundeInfo(enKunde)).thenReturn("OK");
+
+        // act
+        String resultat = bankController.endre(enKunde);
+
+        // assert
+        assertEquals("OK", resultat);
+    }
+
+    @Test
+    public void endreKundeInfo_LoggetInnIkkeOK() {
+        // arrange
+        Kunde enKunde = new Kunde("01010110523",
+                "Lene", "Jensen", "Askerveien 22", "3270",
+                "Asker", "22224444", "HeiHei");
+
+        when(sjekk.loggetInn()).thenReturn("01010110523");
+
+        when(repository.endreKundeInfo(enKunde)).thenReturn("Feil");
+
+        // act
+        String resultat = bankController.endre(enKunde);
+
+        // assert
+        assertEquals("Feil", resultat);
+    }
+
+    @Test
+    public void endreKundeInfo_IkkeLoggetInn() {
+        // arrange
+        Kunde enKunde = new Kunde("01010110523",
+                "Lene", "Jensen", "Askerveien 22", "3270",
+                "Asker", "22224444", "HeiHei");
+
+        when(sjekk.loggetInn()).thenReturn(null);
+
+        // act
+        String resultat = bankController.endre(enKunde);
+
+        // assert
+
+        assertNull(resultat);
     }
 }
 

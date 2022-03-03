@@ -22,7 +22,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class EnhetstesAdminKontoController {
+public class EnhetstestAdminKontoController {
     @InjectMocks
     private AdminKontoController adminKontoController;
 
