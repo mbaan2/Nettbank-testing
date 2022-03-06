@@ -1,10 +1,7 @@
 package oslomet.testing.API;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import oslomet.testing.DAL.BankRepository;
 import oslomet.testing.Models.Konto;
 import oslomet.testing.Models.Kunde;
@@ -69,7 +66,7 @@ public class BankController {
     }
 
     @GetMapping("/utforBetaling")
-    public List<Transaksjon> utforBetaling(Integer txID) {
+    public List<Transaksjon> utforBetaling(int txID) {
         String personnummer = sjekk.loggetInn();
         if (personnummer!=null) {
             if (repository.utforBetaling(txID).equals("OK")) {
