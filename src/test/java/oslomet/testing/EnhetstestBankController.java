@@ -141,7 +141,7 @@ public class EnhetstestBankController {
 
         when(sjekk.loggetInn()).thenReturn("105010123456");
 
-        when(repository.hentKonti(anyString())).thenReturn(konti);
+        when(repository.hentSaldi(anyString())).thenReturn(konti);
 
         // act
         List<Konto> resultat = bankController.hentSaldi();

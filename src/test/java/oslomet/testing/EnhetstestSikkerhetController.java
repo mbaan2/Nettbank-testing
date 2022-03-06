@@ -118,12 +118,13 @@ public class EnhetstestSikkerhetController {
     public void loggetInnOK() {
         // arrange
         session.setAttribute("Innlogget", "12345678901");
+        when(session.getAttribute("Innlogget")).thenReturn("Innlogget");
 
         // act
         String resultat = sikkerhetsController.loggetInn();
 
         // assert
-        assertEquals(session.getAttribute("Innlogget"), resultat);
+        assertEquals("Innlogget", resultat);
     }
 
     @Test
