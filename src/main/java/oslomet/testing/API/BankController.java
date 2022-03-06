@@ -51,7 +51,7 @@ public class BankController {
     }
 
     @PostMapping("/registrerBetaling")
-    public String registrerBetaling(@RequestBody Transaksjon betaling) {
+    public String registrerBetaling(Transaksjon betaling) {
         String personnummer = sjekk.loggetInn();
         if (personnummer!=null) {
             return repository.registrerBetaling(betaling);
@@ -69,7 +69,7 @@ public class BankController {
     }
 
     @GetMapping("/utforBetaling")
-    public List<Transaksjon> utforBetaling(int txID) {
+    public List<Transaksjon> utforBetaling(Integer txID) {
         String personnummer = sjekk.loggetInn();
         if (personnummer!=null) {
             if (repository.utforBetaling(txID).equals("OK")) {
