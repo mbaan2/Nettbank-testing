@@ -160,7 +160,7 @@ public class BankRepository {
                 db.update(sql, kunde.getPostnr(), kunde.getPoststed());
             }
             catch(Exception e){
-                return "Feil";
+                return "Feil med poststed";
             }
         }
         // oppdater Kunde-tabellen
