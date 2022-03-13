@@ -6,7 +6,7 @@ INSERT INTO `Konto` (`Kontonummer`, `Personnummer`, `Saldo`, `Type`, `Valuta`) V
 ('105010123456', '01010110523', 720, 'Lonnskonto', 'NOK'),
 ('105020123456', '01010110523', 100500, 'Sparekonto', 'NOK'),
 ('22334412345', '01010110523', 10234.5, 'Brukskonto', 'NOK'),
-('23456789101', '12345678901', 20000, 'Brukeskonto', 'NOK');
+('23456789101', '12345678901', 20000, 'Brukskonto', 'NOK');
 
 --
 -- Dataark for tabell `Kunde`
