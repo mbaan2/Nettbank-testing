@@ -3,7 +3,6 @@ package oslomet.testing;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Test;
-import org.junit.Assert.*;
 
 import oslomet.testing.Models.Kunde;
 
@@ -100,7 +99,8 @@ public class KundeTest {
     }
 
     //Med constructor
-    Kunde testKunde = new Kunde("123456","Hansen", "Hanson", "Oslogate 2", "1234", "Drammen","123", "admin");
+    Kunde testKunde = new Kunde("123456","Hansen", "Hanson",
+            "Oslogate 2", "1234", "Drammen","123", "admin");
 
     @Test
     public void testPersonnumerConstructor(){

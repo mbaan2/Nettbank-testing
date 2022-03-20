@@ -103,7 +103,8 @@ public class EnhetstestBankController {
     @Test
     public void hentTransaksjoner_LoggetInn() {
         // arrange
-        Konto konto = new Konto("1050101123456", "01010110523", 72000, "Brukskonto", "NOK", null);
+        Konto konto = new Konto("1050101123456", "01010110523",
+                72000, "Brukskonto", "NOK", null);
 
         when(sjekk.loggetInn()).thenReturn("1050101123456");
 
@@ -165,7 +166,8 @@ public class EnhetstestBankController {
     @Test
     public void registrerBetaling_LoggetInnOK() {
         // arrange
-        Transaksjon betaling = new Transaksjon(123, "02020220645", 750, "14-12-2021", "Betaling til deg", "01010110523", "godkjent");
+        Transaksjon betaling = new Transaksjon(123, "02020220645", 750,
+                "14-12-2021", "Betaling til deg", "01010110523", "godkjent");
 
         when(sjekk.loggetInn()).thenReturn("105010123456");
 
@@ -181,7 +183,8 @@ public class EnhetstestBankController {
     @Test
     public void registrerBetaling_LoggetInnIkkeOK() {
         // arrange
-        Transaksjon betaling = new Transaksjon(123, "02020220645", 750, "14-12-2021", "Betaling til deg", "godkjent", "01010110523");
+        Transaksjon betaling = new Transaksjon(123, "02020220645", 750,
+                "14-12-2021", "Betaling til deg", "godkjent", "01010110523");
 
         when(sjekk.loggetInn()).thenReturn("105010123456");
 
@@ -210,8 +213,10 @@ public class EnhetstestBankController {
     @Test
     public void hentBetalinger_LoggetInn() {
         // arrange
-        Transaksjon betaling = new Transaksjon(123, "02020220645", 750, "14-12-2021", "Betaling til deg", "avventer", "01010110523");
-        Transaksjon betaling1 = new Transaksjon(456, "03030330756", 550, "12-12-2021", "Jaja", "avventer", "01010110523");
+        Transaksjon betaling = new Transaksjon(123, "02020220645", 750,
+                "14-12-2021", "Betaling til deg", "avventer", "01010110523");
+        Transaksjon betaling1 = new Transaksjon(456, "03030330756", 550,
+                "12-12-2021", "Jaja", "avventer", "01010110523");
         List<Transaksjon> transaksjoner = new ArrayList<>();
         transaksjoner.add(betaling);
         transaksjoner.add(betaling1);
@@ -242,9 +247,11 @@ public class EnhetstestBankController {
     @Test
     public void utforBetaling_LoggetInnOK() {
         // arrange
-        Transaksjon betaling = new Transaksjon(123, "02020220645", 750, "14-12-2021", "Betaling til deg", "avventer", "01010110523");
+        Transaksjon betaling = new Transaksjon(123, "02020220645", 750,
+                "14-12-2021", "Betaling til deg", "avventer", "01010110523");
 
-        Konto konto = new Konto("0101199111111", "01010110523", 9000, "Brukskonto", "NOK", null);
+        Konto konto = new Konto("0101199111111", "01010110523", 9000,
+                "Brukskonto", "NOK", null);
         double saldo = konto.getSaldo() - betaling.getBelop();
         konto.setSaldo(saldo);
 
@@ -263,9 +270,11 @@ public class EnhetstestBankController {
     @Test
     public void utforBetaling_LoggetInnIkkeOK() {
         // arrange
-        Transaksjon betaling = new Transaksjon(123, "02020220645", 750, "14-12-2021", "Betaling til deg", "avventer", "01010110523");
+        Transaksjon betaling = new Transaksjon(123, "02020220645", 750,
+                "14-12-2021", "Betaling til deg", "avventer", "01010110523");
 
-        Konto konto = new Konto("0101199111111", "01010110523", 9000, "Brukskonto", "NOK", null);
+        Konto konto = new Konto("0101199111111", "01010110523",
+                9000, "Brukskonto", "NOK", null);
         double saldo = konto.getSaldo() - betaling.getBelop();
         konto.setSaldo(saldo);
 

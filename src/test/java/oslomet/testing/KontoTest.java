@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
-import org.junit.Assert.*;
 
 import oslomet.testing.Models.Konto;
 import oslomet.testing.Models.Transaksjon;
@@ -76,9 +75,11 @@ public class KontoTest {
     @Test
     public void testTransaksjoner(){
         Konto testKonto= new Konto();
-        Transaksjon t1 = new Transaksjon(1, "123456", 152, "13.13.2023", "en melding", "venter", "123546789");
+        Transaksjon t1 = new Transaksjon(1, "123456",
+                152, "13.13.2023", "en melding", "venter", "123546789");
         Transaksjon t2 = new Transaksjon();
-        Transaksjon t3 = new Transaksjon(2, "123456", 350, "13.13.2023", "en melding2", "godkjent", "123546789");
+        Transaksjon t3 = new Transaksjon(2, "123456",
+                350, "13.13.2023", "en melding2", "godkjent", "123546789");
 
         List<Transaksjon> transaksjonerInput = new ArrayList<>();
         transaksjonerInput.add(t1);

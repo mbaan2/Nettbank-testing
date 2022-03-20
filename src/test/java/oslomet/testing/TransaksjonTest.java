@@ -1,7 +1,6 @@
 package oslomet.testing;
 
 import org.junit.Test;
-import oslomet.testing.Models.Kunde;
 import oslomet.testing.Models.Transaksjon;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -88,7 +87,8 @@ public class TransaksjonTest {
     }
 
     //Med constructor
-    Transaksjon testTransaksjon = new Transaksjon(123, "123456", 5000.15, "01.01.0001", "Hei", "godkjent", "123456879");
+    Transaksjon testTransaksjon = new Transaksjon(123, "123456",
+            5000.15, "01.01.0001", "Hei", "godkjent", "123456879");
 
     @Test
     public void testTxIDConstructor(){

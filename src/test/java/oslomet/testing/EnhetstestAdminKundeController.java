@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class EnhetstesAdminKundeController {
+public class EnhetstestAdminKundeController {
     @InjectMocks
     private AdminKundeController adminKundeController;
 
@@ -31,8 +31,10 @@ public class EnhetstesAdminKundeController {
     @Test
     public void hentAll_loggetInnOK(){
         List<Kunde> kunder = new ArrayList<>();
-        Kunde kunde1 = new Kunde("123456","Per", "Pettersen", "Trondhjemsgate 212", "1234", "Tromsø","12345679", "passord");
-        Kunde kunde2 = new Kunde("123456","Hansen", "Hanson", "Oslogate 2", "1234", "Drammen","123", "admin");
+        Kunde kunde1 = new Kunde("123456","Per", "Pettersen",
+                "Trondhjemsgate 212", "1234", "Tromsø","12345679", "passord");
+        Kunde kunde2 = new Kunde("123456","Hansen", "Hanson",
+                "Oslogate 2", "1234", "Drammen","123", "admin");
         kunder.add(kunde1);
         kunder.add(kunde2);
 
@@ -62,7 +64,8 @@ public class EnhetstesAdminKundeController {
 
     @Test
     public void lagreKunde_loggetInnOK(){
-        Kunde kunde = new Kunde("123456","Per", "Pettersen", "Trondhjemsgate 212", "1234", "Tromsø","12345679", "passord");
+        Kunde kunde = new Kunde("123456","Per", "Pettersen",
+                "Trondhjemsgate 212", "1234", "Tromsø","12345679", "passord");
         when(sjekk.loggetInn()).thenReturn("01010110523");
         when(adminRepository.registrerKunde(kunde)).thenReturn("OK");
 
@@ -72,7 +75,8 @@ public class EnhetstesAdminKundeController {
 
     @Test
     public void lagreKunde_loggetInnFeil(){
-        Kunde kunde = new Kunde("0","Per", "Pettersen", "Trondhjemsgate 212", "1234", "Tromsø","12345679", "passord");
+        Kunde kunde = new Kunde("0","Per", "Pettersen",
+                "Trondhjemsgate 212", "1234", "Tromsø","12345679", "passord");
         when(sjekk.loggetInn()).thenReturn("01010110523");
         when(adminRepository.registrerKunde(kunde)).thenReturn("Feil");
 
@@ -82,7 +86,8 @@ public class EnhetstesAdminKundeController {
 
     @Test
     public void lagreKunde_ikkeloggetInn(){
-        Kunde kunde = new Kunde("0","Per", "Pettersen", "Trondhjemsgate 212", "1234", "Tromsø","12345679", "passord");
+        Kunde kunde = new Kunde("0","Per", "Pettersen",
+                "Trondhjemsgate 212", "1234", "Tromsø","12345679", "passord");
         when(sjekk.loggetInn()).thenReturn(null);
 
         String resultat = adminKundeController.lagreKunde(kunde);
@@ -91,7 +96,8 @@ public class EnhetstesAdminKundeController {
 
     @Test
     public void endre_loggetInnOK(){
-        Kunde kunde = new Kunde("123456","Hansen", "Hanson", "Oslogate 2", "1234", "Drammen","123", "admin");
+        Kunde kunde = new Kunde("123456","Hansen", "Hanson",
+                "Oslogate 2", "1234", "Drammen","123", "admin");
         when(sjekk.loggetInn()).thenReturn("01010110523");
         when(adminRepository.endreKundeInfo(kunde)).thenReturn("OK");
 
@@ -101,7 +107,8 @@ public class EnhetstesAdminKundeController {
 
     @Test
     public void endre_loggetInnFeil(){
-        Kunde kunde = new Kunde("0","Hansen", "Hanson", "Oslogate 2", "1234", "Drammen","123", "admin");
+        Kunde kunde = new Kunde("0","Hansen", "Hanson",
+                "Oslogate 2", "1234", "Drammen","123", "admin");
         when(sjekk.loggetInn()).thenReturn("01010110523");
         when(adminRepository.endreKundeInfo(kunde)).thenReturn("Feil");
 
@@ -111,7 +118,8 @@ public class EnhetstesAdminKundeController {
 
     @Test
     public void endre_ikkeloggetInn(){
-        Kunde kunde = new Kunde("123456","Hansen", "Hanson", "Oslogate 2", "1234", "Drammen","123", "admin");
+        Kunde kunde = new Kunde("123456","Hansen", "Hanson",
+                "Oslogate 2", "1234", "Drammen","123", "admin");
         when(sjekk.loggetInn()).thenReturn(null);
 
         String resultat = adminKundeController.endre(kunde);
